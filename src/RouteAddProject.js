@@ -1,16 +1,28 @@
 import React, {Component} from 'react';
 import {navigate} from '@reach/router'
+import API from './API'
 
 class RouteAddProject extends Component{
 
-    constructor (props){
-    super(props)
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+        var formData = new FormData(this.form);
+
+        var data = {
+            name:formData.get('name-input'),
+            description:formData.get('description-input'),
+            type_id:formData.get('type-input')
+        }
+
+        API.addProjects(data).then(res => navigate('/projects'))
     }
+
+
     render(){
         return (
             <div class="main">
                 <h3>Add a project</h3>
-                <form>
+                <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div class="form-group">
                         <label for="name-input">Name</label>
                         <input type="text" class="form-control" name="name-input" id="name-input" placeholder="Enter project name" />

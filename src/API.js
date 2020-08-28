@@ -17,4 +17,4 @@ var API = {
         return axios.put(urlPrefix+'/projects/'+id,data)
     }
 }
-export default API
+export default API;

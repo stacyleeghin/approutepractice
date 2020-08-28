@@ -18,7 +18,7 @@ class Project extends Component {
             <div className="card project">
               <img class="card-img-top" src="project.jpg" alt="Card image cap"/>
               <div className="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{name}</h5>
                 <p class="card-text">Some quick example text to build on the card title</p>
                 <p>
                   <i class="fas fa-heart"></i>
