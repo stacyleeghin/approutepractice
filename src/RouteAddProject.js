@@ -11,7 +11,8 @@ class RouteAddProject extends Component{
         var data = {
             name:formData.get('name-input'),
             description:formData.get('description-input'),
-            type_id:formData.get('type-input')
+            type_id:formData.get ('type-input')
+          
         }
 
         API.addProjects(data).then(res => navigate('/projects'))
@@ -50,7 +51,7 @@ class RouteAddProject extends Component{
                 </form>
             </div>
 
-        )
+        );
         
     }
 

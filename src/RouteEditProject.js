@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {navigate} from '@reach/router'
+import API from './API'
 
 class RouteEditProject extends Component {
 
@@ -7,19 +8,38 @@ class RouteEditProject extends Component {
         super(props)
         this.state ={
             project:{
-                name:'Sunset on Waiheke',
-                description:'Painting by a local artist'
+                // name:'Sunset on Waiheke',
+                // description:'Painting by a local artist'
             }
         }
+    }
+
+    componentDidMount(){
+        var {id} = this.props;
+        API.getSingleProject(id).then(res => {
+            this.setState({project:res.data})
+        })
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
 
+        var formData = new FormData(this.form)
+
+        var data = {
+            name:formData.get('name-input'),
+            description:formData.get('description-input'),
+            type_id:formData.get('type-input')
+        }
+        var {id} = this.props;
+        API.updateProjects(id,data).then(res => navigate('/projects'))
+
+
+
     }
     render(){
 
-        var {name, description} = this.state.project
+        var {name, description,type_id} = this.state.project
 
         return(
             <div className="main">

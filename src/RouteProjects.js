@@ -24,10 +24,14 @@ class RouteProjects extends Component {
         }
     }
 
-    componentDidMount(){
+    loadProjects = () => {
       API.getProjects().then(res => {
         this.setState({projects:res.data})
       })
+    }
+    componentDidMount(){
+      this.loadProjects();
+      
     }
 
     render(){
@@ -42,6 +46,7 @@ class RouteProjects extends Component {
                 var projectProps = {
                   ...project,
                   key: project.id,
+                  loadProjects:this.loadProjects
 
                 };
                 return (<Project {...projectProps} />)

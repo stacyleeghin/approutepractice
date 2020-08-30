@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
 import {Link} from '@reach/router'
+import API from './API'
 
 class Project extends Component {
     
     handleTrashClick = () => {
+      var {id,loadProjects} = this.props
+      API.deleteProject(id)
+      loadProjects()
 
     }
     
@@ -12,14 +16,12 @@ class Project extends Component {
         var {name,description,id} = this.props
 
         return(
-
-            <div className="main">
       
             <div className="card project">
               <img class="card-img-top" src="project.jpg" alt="Card image cap"/>
               <div className="card-body">
                 <h5 class="card-title">{name}</h5>
-                <p class="card-text">Some quick example text to build on the card title</p>
+                <p class="card-text">{description}</p>
                 <p>
                   <i class="fas fa-heart"></i>
                   <Link to={'/projects/'+id+'edit'}><i class="fas fa-edit"></i></Link>
@@ -27,7 +29,6 @@ class Project extends Component {
                 </p>
               </div>
             </div>
-          </div>
 
         );
 
