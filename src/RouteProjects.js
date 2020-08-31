@@ -46,7 +46,7 @@ class RouteProjects extends Component {
                 var projectProps = {
                   ...project,
                   key: project.id,
-                  loadProjects:this.loadProjects
+            
 
                 };
                 return (<Project {...projectProps} />)

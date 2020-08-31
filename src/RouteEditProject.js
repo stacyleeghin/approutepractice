@@ -22,7 +22,7 @@ class RouteEditProject extends Component {
     }
 
     handleFormSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         var formData = new FormData(this.form)
 
@@ -39,23 +39,23 @@ class RouteEditProject extends Component {
     }
     render(){
 
-        var {name, description,type_id} = this.state.project
+        var { name, description, type_id } = this.state.project
 
-        return(
+        return (
             <div className="main">
                 <h3>Edit a project</h3>
-                <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
+                <form onSubmit={this.handleFormSubmit} ref={(el) => { this.form = el }}>
                     <div className="form-group">
                         <label htmlFor="name-input">Name</label>
-                        <input type="text" className="form-control" name="name-input" id="photo-input" defaultValue={name}/>
+                        <input type="text" className="form-control" name="name-input" id="name-input" defaultValue={name} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="name-input">Description</label>
-                        <input type="text" className="form-control" name="description-input" id="description-input" defaultValue={description}/>
+                        <input type="text" className="form-control" name="description-input" id="description-input" defaultValue={description} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="name-input">Photo</label>
-                        <input type="text" className="form-control" name="photo-input" id="photo-input" value="project.jpg"/>
+                        <input type="text" className="form-control" name="photo-input" id="photo-input" value="project.jpg" />
                     </div>
 
                     <div className="form-group">
