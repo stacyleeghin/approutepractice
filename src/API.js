@@ -11,7 +11,7 @@ var API = {
         return axios.get(urlPrefix+'/projects/'+ id)
     },
     addProjects : (data) => {
-        return axios.get(urlPrefix+'/projects',data)
+        return axios.post(urlPrefix+'/projects',data)
     },
     updateProjects : (id,data) => {
         return axios.put(urlPrefix+'/projects/'+id,data)
