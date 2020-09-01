@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from '@reach/router'
+import API from './API'
 
 
 class Project extends Component {
     
     handleTrashClick = () => {
+      var {id,loadProjects} = this.props
+      API.deleteProject(id)
+      loadProjects()
   
 
     }

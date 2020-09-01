@@ -16,6 +16,10 @@ var API = {
     updateProjects : (id,data) => {
         return axios.put(urlPrefix+'/projects/'+id,data)
     },
+    deleteProjects : (id,data) => {
+        return axios.delete(urlPrefix+'/projects/'+id)
+        
+    }
 
 }
 export default API
