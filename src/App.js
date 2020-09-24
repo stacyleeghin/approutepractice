@@ -9,20 +9,34 @@ import RouteSingleType from './RouteSingleType'
 
 
 import './App.css';
+import API from './API';
 
 
 class App extends Component{
 
+  constructor(props){
+    super(props)
+    this.state ={
+      types:[],
+    }
+  }
+  componentDidMount(){
+    API.getTypes().then(res => this.setState({types:res.data}))
+
+  }
+
     
   render(){
+    var {types} = this.state
     return (
       <div className="app">
-
-
         <div className="header">
           <span>Welcome</span><i className="fas fa-bars"></i>
           <ul class="menu">
             <li><Link to="projects">All projects</Link></li>
+            {
+              types.map(type => <li><Link to={'/types/'+type.id}>{type.name}</Link></li>)
+            }
             <li><Link to ="projects/create">Add a project</Link></li>
             <li><a href="">Login</a></li>
             <li><a href="">Signup</a></li>

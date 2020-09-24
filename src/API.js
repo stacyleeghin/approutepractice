@@ -22,6 +22,9 @@ var API = {
     },
     getSingleType : (id) => {
         return axios.get (urlPrefix+'/types/'+id)
+    }, 
+    getTypes : () => {
+        return axios.get (urlPrefix+'/types')
     }
 
 }
