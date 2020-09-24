@@ -31,6 +31,7 @@ class RouteLogin extends Component {
             if (user){
                 console.log(user.name + 'has logged in')
                 setCurrentUser(user)
+                localStorage.setItem('userId',user.id)
                 navigate('/projects')
             }else{
                 this.setState({message:'try again'})

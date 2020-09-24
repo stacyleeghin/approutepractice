@@ -31,6 +31,9 @@ var API = {
     },
     authenticate : (data) => {
         return axios.post(urlPrefix+'/users/authenticate',data)
+    },
+    getSingleUser : (id) => {
+        return axios.get(urlPrefix+'/user'+id)
     }
 
 }
