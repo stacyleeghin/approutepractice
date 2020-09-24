@@ -29,7 +29,7 @@ var API = {
     addUser : (data) => {
         return axios.post (urlPrefix+'/users',data)
     },
-    autheticate : (data) => {
+    authenticate : (data) => {
         return axios.post(urlPrefix+'/users/authenticate',data)
     }
 

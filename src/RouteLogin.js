@@ -20,6 +20,8 @@ class RouteLogin extends Component {
             password: formData.get('password-input'),
 
         }
+        var {setCurrentUser} = this.props
+
         API.authenticate(data)
         .then(res => {
             var user = res.data
@@ -28,6 +30,7 @@ class RouteLogin extends Component {
         .then(user => {
             if (user){
                 console.log(user.name + 'has logged in')
+                setCurrentUser(user)
                 navigate('/projects')
             }else{
                 this.setState({message:'try again'})
