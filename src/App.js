@@ -20,11 +20,12 @@ class App extends Component{
     super(props)
     this.state ={
       types:[],
-      setCurrentUser: null
+      currentUser: null
     }
-    setCurrentUser = (user) =>{
-      this.setState({setCurrentUser:user})
-    }
+  }
+
+  setCurrentUser = (user) =>{
+    this.setState({currentUser:user})
   }
   componentDidMount(){
     API.getTypes().then(res => this.setState({types:res.data}))
@@ -33,27 +34,42 @@ class App extends Component{
 
     
   render(){
-    var {types} = this.state
+    var {types, currentUser} = this.state
     return (
       <div className="app">
         <div className="header">
-          <span>Welcome</span><i className="fas fa-bars"></i>
+          {
+            currentUser? (<span>Welcome {currentUser.name}</span>):null
+          }
+        <i className="fas fa-bars"></i>
+  
           <ul class="menu">
             <li><Link to="projects">All projects</Link></li>
             {
               types.map(type => <li><Link to={'/types/'+type.id}>{type.name}</Link></li>)
             }
-            <li><Link to ="projects/create">Add a project</Link></li>
-            <li><Link to= "/users/autheticate">Login</Link></li>
-            <li><Link to= "/users/create">Sign up</Link></li>
-         
+            {
+              currentUser ? (
+                <>
+                <li><Link to="projects/create">Add a project</Link></li>
+                <li><a href= "#">Logout</a></li>
+                </>
+
+              ):(
+                <>
+                <li><Link to= "/users/autheticate">Login</Link></li>
+                <li><Link to= "/users/create">Sign up</Link></li>
+                </>
+              )
+            }
           </ul>
+
         </div>
 
         <Router>
           <RouteProjects path ="projects" />
-          <RouteAddProject path ="projects/create" />
-          <RouteEditProject path ="projects/:id/edit" />
+          {currentUser ? <RouteAddProject path ="projects/create" /> :null}
+          {currentUser ?<RouteEditProject path ="projects/:id/edit" /> :null}
           <RouteSingleType path ="/types/:id"/>
           <RouteAddUser path="/users/create" />
           <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/autheticate" />
