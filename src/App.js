@@ -33,6 +33,7 @@ class App extends Component{
           <RouteProjects path ="projects" />
           <RouteAddProject path ="projects/create" />
           <RouteEditProject path ="projects/:id/edit" />
+          <RouteSingleType path ="/types/:id"/>
 
         </Router>
      
