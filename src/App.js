@@ -5,7 +5,8 @@ import { Router, Link } from '@reach/router'
 import RouteProjects from './RouteProjects';
 import RouteAddProject from './RouteAddProject';
 import RouteEditProject from './RouteEditProject';
-import RouteSingleType from './RouteSingleType'
+import RouteSingleType from './RouteSingleType';
+import RouteAddUser from './RouteAddUser'
 
 
 import './App.css';
@@ -39,6 +40,7 @@ class App extends Component{
             }
             <li><Link to ="projects/create">Add a project</Link></li>
             <li><a href="">Login</a></li>
+            <li><Link to= "/users/create"></Link></li>
             <li><a href="">Signup</a></li>
           </ul>
         </div>
@@ -48,6 +50,7 @@ class App extends Component{
           <RouteAddProject path ="projects/create" />
           <RouteEditProject path ="projects/:id/edit" />
           <RouteSingleType path ="/types/:id"/>
+          <RouteAddUser path="/users/create" />
 
         </Router>
      

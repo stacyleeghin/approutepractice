@@ -25,6 +25,9 @@ var API = {
     }, 
     getTypes : () => {
         return axios.get (urlPrefix+'/types')
+    }, 
+    addUser : (data) => {
+        return axios.post (urlPrefix+'/users',data)
     }
 
 }
